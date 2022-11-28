@@ -12,3 +12,6 @@ Projeto de estudo da linguagem rust com o pacote actix-web para desenvolvimento 
 ## Docker
 - `docker build --tag rust-api .`
 - `docker run -d -p 8080:8080 --name rust-api rust-api`
+
+## Server run
+- `http://localhost:8080`
