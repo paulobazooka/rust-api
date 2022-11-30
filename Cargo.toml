@@ -10,3 +10,11 @@ repository = "https://github.com/paulobazooka/rust-api"
 [dependencies]
 actix-web = "4.2.1"
 serde_json = "1.0.89"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = "z"
+debug = false
+
