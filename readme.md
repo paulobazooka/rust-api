@@ -15,3 +15,6 @@ Projeto de estudo da linguagem rust com o pacote actix-web para desenvolvimento 
 
 ## Server run
 - `http://localhost:8080`
+
+## OpenAPI / Swagger
+- [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/)

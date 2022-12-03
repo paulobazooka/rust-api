@@ -2,7 +2,7 @@
 name = "rust-api"
 version = "1.0.0"
 edition = "2021"
-authors = ["Paulo Sérgio do Nascimento"]
+authors = ["Paulo Sérgio do Nascimento <paulosergionas@gmail.com>"]
 repository = "https://github.com/paulobazooka/rust-api"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -10,6 +10,8 @@ repository = "https://github.com/paulobazooka/rust-api"
 [dependencies]
 actix-web = "4.2.1"
 serde_json = "1.0.89"
+utoipa = { version = "2", features = ["actix_extras"] }
+utoipa-swagger-ui = {version = "3.0.1", features = ["actix-web"]}
 
 [profile.dev]
 opt-level = 0

@@ -6,6 +6,11 @@ const AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
 const REPOSITORY: &'static str = env!("CARGO_PKG_REPOSITORY");
 const JSON: &'static str = "application/json; charset=utf-8";
 
+#[utoipa::path(
+        get,
+        path = "/",
+        responses((status=200, description="Index")),
+    )]
 #[get("/")]
 pub async fn index() -> impl Responder {
     let _body = json!(
