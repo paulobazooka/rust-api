@@ -1,15 +1,26 @@
 use actix_web::{App, HttpServer};
-use actix_web::web::get;
 use utoipa::OpenApi;
 use utoipa_swagger_ui::SwaggerUi;
 
-use rust_api::rotas::*;
+use rust_api::rotas::{index, get_usuarios, set_usuario};
+use rust_api::models::*;
 
 const ADDRESS: &'static str = "0.0.0.0";
 const PORT: u16 = 8080;
 
 #[derive(OpenApi)]
-#[openapi(paths(), components())]
+#[openapi(
+    paths(
+        rust_api::rotas::index,
+        rust_api::rotas::get_usuarios,
+        rust_api::rotas::set_usuario),
+    components(
+        schemas(
+            Usuario,
+            UsuarioDTO
+        )
+    )
+)]
 struct ApiDoc;
 
 #[actix_web::main]
