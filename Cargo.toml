@@ -9,7 +9,6 @@ repository = "https://github.com/paulobazooka/rust-api"
 
 [dependencies]
 actix-web = "4.2.1"
-rand = "0.8.5"
 serde = "1.0.149"
 serde_json = "1.0.89"
 utoipa = { version = "2", features = ["actix_extras"] }
@@ -19,6 +18,8 @@ uuid = { version = "1.2.2", features = [
     "fast-rng", # Use a faster (but still sufficiently random) RNG
     "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
 ] }
+diesel = { version = "2.0.2", features = ["postgres"] }
+dotenvy = "0.15.6"
 
 [profile.dev]
 opt-level = 0

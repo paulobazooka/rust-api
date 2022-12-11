@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+#  rust-api:
+#    build: .
+#    container_name: rust-api
+#    env_file:
+#      - .env
+#    ports:
+#      - '8080:8080'
+  db:
+    image: postgres:14.1-alpine
+    container_name: postgres-rust-api
+    cpu_percent: 8
+#    restart: always
+    environment:
+      - POSTGRES_DB=rust_api_db
+      - POSTGRES_USER=rust_user
+      - POSTGRES_PASSWORD=teste123
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    name: rust-api-db-volume
+    driver: local

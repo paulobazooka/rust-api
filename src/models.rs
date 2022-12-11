@@ -1,12 +1,18 @@
 use std::string::ToString;
-use uuid::Uuid;
-use serde::{Serialize, Deserialize};
-use utoipa::ToSchema;
 
+use diesel::*;
+use serde::{Deserialize, Serialize};
+use utoipa::ToSchema;
+use uuid::Uuid;
+
+use crate::schema::*;
+
+// Constantes do sistema obtidas do arquivo Cargo.toml
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
 const REPOSITORY: &str = env!("CARGO_PKG_REPOSITORY");
 
+// Struct que representa as informações do sistema
 #[derive(Debug, Serialize, Deserialize, ToSchema)]
 pub struct Info {
     pub version: String,
@@ -15,6 +21,7 @@ pub struct Info {
     pub documentation: String,
 }
 
+// Função associada a Info que cria uma struct com as informações do sistema
 impl Info {
     pub fn new() -> Self {
         Self {
@@ -26,7 +33,7 @@ impl Info {
     }
 }
 
-
+// Struct que representa um usuário para ser persistido no banco de dados
 #[derive(Serialize, Deserialize, ToSchema, Clone, Debug)]
 pub struct UsuarioDTO {
     #[schema(example = "Nome do usuário")]
@@ -35,7 +42,9 @@ pub struct UsuarioDTO {
     pub email: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, ToSchema)]
+// Struct que representa um usuário/registro existente no banco de dados
+#[derive(Debug, Serialize, Deserialize, ToSchema, Queryable, Insertable)]
+#[diesel(table_name = usuario)]
 pub struct Usuario {
     #[schema(example = "ID do usuário")]
     pub id: String,
@@ -45,6 +54,7 @@ pub struct Usuario {
     pub email: String,
 }
 
+// Conjunto de implementações da struct Usuario
 impl Usuario {
     // Função para construir uma struct Usuario
     pub fn new(usuario: UsuarioDTO) -> Self {
